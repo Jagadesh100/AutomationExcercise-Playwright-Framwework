@@ -1,4 +1,4 @@
-import { test , expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/homePage';
 import { SignUpOrLoginPage } from "../pages/signUporLoginPage";
 import { AccountDeletedPage } from "../pages/accountDeletedPage";
@@ -9,24 +9,24 @@ const password = "Test Password";
 const emailAddress = "test124@gabc.com";
 const incorrectEmailAddress = "incorrect124@gabc.com";
 const incorrectPassword = "incorrectpassword";
-let homePage : HomePage;
-let signUpOrLoginPage : SignUpOrLoginPage;
-let accountDeletedPage : AccountDeletedPage;
+let homePage: HomePage;
+let signUpOrLoginPage: SignUpOrLoginPage;
+let accountDeletedPage: AccountDeletedPage;
 
-test.beforeEach(async({page})=>{
+test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
     signUpOrLoginPage = new SignUpOrLoginPage(page);
     accountDeletedPage = new AccountDeletedPage(page);
 })
 
-test("Test Case 2: Login User with correct email and password", async({page})=>{
+test("Test Case 2: Login User with correct email and password", async ({ page }) => {
     await page.goto(baseURL);
 
     // Verify that home page is visible successfully
     await expect(page).toHaveTitle("Automation Exercise");
-    await expect(homePage.homeLink).toHaveCSS('color','rgb(255, 165, 0)');
+    await expect(homePage.homeLink).toHaveCSS('color', 'rgb(255, 165, 0)');
 
-     // Click on 'Signup / Login' button
+    // Click on 'Signup / Login' button
     await homePage.signUporLoginLink.click();
 
     // Verify 'Login to your account' is visible
@@ -59,14 +59,14 @@ test("Test Case 2: Login User with correct email and password", async({page})=>{
     */
 })
 
-test("Test Case 3: Login User with incorrect email and password", async({page})=>{
+test("Test Case 3: Login User with incorrect email and password", async ({ page }) => {
     await page.goto(baseURL);
 
     // Verify that home page is visible successfully
     await expect(page).toHaveTitle("Automation Exercise");
-    await expect(homePage.homeLink).toHaveCSS('color','rgb(255, 165, 0)');
+    await expect(homePage.homeLink).toHaveCSS('color', 'rgb(255, 165, 0)');
 
-     // Click on 'Signup / Login' button
+    // Click on 'Signup / Login' button
     await homePage.signUporLoginLink.click();
 
     // Verify 'Login to your account' is visible
@@ -83,14 +83,14 @@ test("Test Case 3: Login User with incorrect email and password", async({page})=
     console.log(await signUpOrLoginPage.incorretDetailText.textContent());
 })
 
-test("Test Case 4: Logout User",async({page})=>{
+test("Test Case 4: Logout User", async ({ page }) => {
     await page.goto(baseURL);
 
     // Verify that home page is visible successfully
     await expect(page).toHaveTitle("Automation Exercise");
-    await expect(homePage.homeLink).toHaveCSS('color','rgb(255, 165, 0)');
+    await expect(homePage.homeLink).toHaveCSS('color', 'rgb(255, 165, 0)');
 
-     // Click on 'Signup / Login' button
+    // Click on 'Signup / Login' button
     await homePage.signUporLoginLink.click();
 
     // Verify 'Login to your account' is visible
@@ -115,6 +115,6 @@ test("Test Case 4: Logout User",async({page})=>{
     await expect(signUpOrLoginPage.signUpPageAssertion).toBeVisible();
     await expect(signUpOrLoginPage.loginBtn).toBeVisible();
     await expect(signUpOrLoginPage.signUpButton).toBeVisible();
-    await expect(signUpOrLoginPage.signUpOrLoginLink).toHaveCSS('color','rgb(255, 165, 0)');
+    await expect(signUpOrLoginPage.signUpOrLoginLink).toHaveCSS('color', 'rgb(255, 165, 0)');
 })
 
