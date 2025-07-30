@@ -1,4 +1,4 @@
-import { test , expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { HomePage } from "../pages/homePage";
 import { RegisterPage } from "../pages/registerPage";
 import { SignUpOrLoginPage } from "../pages/signUporLoginPage";
@@ -10,13 +10,13 @@ const userName = "TestUserName";
 const password = "Test Password";
 const emailAddress = "test125@gabc.com";
 const existingEmailAddress = "test123@gmail.com";
-let homePage : HomePage;
-let registerPage : RegisterPage;
-let signUpOrLoginPage : SignUpOrLoginPage;
-let accountCreatedPage : AccountCreatedPage;
-let accountDeletedPage : AccountDeletedPage;
+let homePage: HomePage;
+let registerPage: RegisterPage;
+let signUpOrLoginPage: SignUpOrLoginPage;
+let accountCreatedPage: AccountCreatedPage;
+let accountDeletedPage: AccountDeletedPage;
 
-test.beforeEach(async({page})=>{
+test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
     registerPage = new RegisterPage(page);
     signUpOrLoginPage = new SignUpOrLoginPage(page);
@@ -24,12 +24,12 @@ test.beforeEach(async({page})=>{
     accountDeletedPage = new AccountDeletedPage(page);
 })
 
-test("Test Case 1: Register User", async({page})=>{
+test("Test Case 1: Register User", async ({ page }) => {
     await page.goto(baseURL);
 
     // Verify that home page is visible successfully
     await expect(page).toHaveTitle("Automation Exercise");
-    await expect(homePage.homeLink).toHaveCSS('color','rgb(255, 165, 0)');
+    await expect(homePage.homeLink).toHaveCSS('color', 'rgb(255, 165, 0)');
 
     // Click on 'Signup / Login' button
     await homePage.signUporLoginLink.click();
@@ -50,7 +50,7 @@ test("Test Case 1: Register User", async({page})=>{
     // Assertion for Name and Email Textbox to be written
     await registerPage.passwordTextBox.fill(password);
     await registerPage.daySelector.selectOption('1');
-    await registerPage.monthSelector.selectOption({label:'February'});
+    await registerPage.monthSelector.selectOption({ label: 'February' });
     await registerPage.yearSelector.selectOption("1997");
 
     await registerPage.firstNameTextBox.fill("Test First Name");
@@ -63,7 +63,7 @@ test("Test Case 1: Register User", async({page})=>{
     await registerPage.zipCodeTextBox.fill("Test Zip Code");
     await registerPage.mobileNumberTextBox.fill("1111111111");
     await registerPage.createAccountBtn.click();
-    
+
     // Verify that 'ACCOUNT CREATED!' is visible
     await expect(accountCreatedPage.accountCreatedText).toBeVisible();
     console.log(await accountCreatedPage.accountCreatedText.textContent());
@@ -84,17 +84,17 @@ test("Test Case 1: Register User", async({page})=>{
 
     // Verify user Navigated to Home Page
     await expect(page).toHaveTitle("Automation Exercise");
-    await expect(homePage.homeLink).toHaveCSS('color','rgb(255, 165, 0)');
+    await expect(homePage.homeLink).toHaveCSS('color', 'rgb(255, 165, 0)');
     //await page.pause();
 
 })
 
-test("Test Case 5: Register User with existing email", async({page})=>{
+test("Test Case 5: Register User with existing email", async ({ page }) => {
     await page.goto(baseURL);
 
     // Verify that home page is visible successfully
     await expect(page).toHaveTitle("Automation Exercise");
-    await expect(homePage.homeLink).toHaveCSS('color','rgb(255, 165, 0)');
+    await expect(homePage.homeLink).toHaveCSS('color', 'rgb(255, 165, 0)');
 
     // Click on 'Signup / Login' button
     await homePage.signUporLoginLink.click();
