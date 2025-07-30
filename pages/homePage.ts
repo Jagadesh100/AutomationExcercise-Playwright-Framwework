@@ -23,7 +23,7 @@ export class HomePage{
         this.testcasesLink = page.getByRole("link", {name:'Test Cases'});
         this.apiTestingLink = page.getByRole("link", {name:'API Testing'});
         this.videoTutorialsLink = page.getByRole("link", {name:'Video Tutorials'});
-        this.contactUsLink = page.getByRole("link", {name:'sContact us'});
+        this.contactUsLink = page.getByRole("link", {name:'Contact us'});
         this.loggedInUserName = page.locator(".navbar-nav").locator("li a").last();
         this.currentUserName = this.loggedInUserName.locator("b"); 
         //page.locator(".navbar-nav").last().locator("li a b");
