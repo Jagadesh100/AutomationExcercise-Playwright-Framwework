@@ -46,9 +46,9 @@ test('Test Case 6: Contact Us Form', async ({ page }) => {
     // on method waits for Javascript dialogbox and accepts the prompt
     page.on(
         'dialog',
-        dialog=>dialog.accept()
+        dialog => dialog.accept()
     );
-    
+
     // Click on Submit button
     await contactUsPage.submitBtn.click();
 
@@ -58,7 +58,7 @@ test('Test Case 6: Contact Us Form', async ({ page }) => {
 
     //Click 'Home' button and verify that landed to home page successfully
     await contactUsPage.homeBtn.click();
-    
+
     // Verify that home page is visible successfully
     await expect(page).toHaveTitle("Automation Exercise");
     await expect(homePage.homeLink).toHaveCSS('color', 'rgb(255, 165, 0)');

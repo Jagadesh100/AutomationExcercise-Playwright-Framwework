@@ -6,6 +6,6 @@ export class TestCasesPage {
 
     constructor(page: Page) {
         this.testCasesLink = page.locator('//a[contains(text(),"Test Cases")]');
-        this.testCasesHeading = page.getByRole('heading', { name: 'Test Cases' , exact:true });
+        this.testCasesHeading = page.getByRole('heading', { name: 'Test Cases', exact: true });
     }
 }
